@@ -5,19 +5,11 @@ const input = document.querySelector("#guessing");
 const juegoContainer = document.querySelector(".juegoContainer");
 const conteinerTipos = document.querySelector(".tipos");
 const tries = document.querySelector(".tries");
-let nombre = "";
 
+let nombre = "";
 let intentoNumero = 0;
 
 let numeroRandom = Math.floor(Math.random() * 898);
-
-function pokeLog(datos) {
-  nombre = datos.name;
-  imagenPokemon.src = datos.sprites.front_default;
-  imagenPokemon.id = "pokemon";
-  pokemon.appendChild(imagenPokemon);
-  agregarTipos(datos);
-}
 
 fetch(`https://pokeapi.co/api/v2/pokemon/${numeroRandom}/`)
   .then((respuesta) => respuesta.json())
@@ -28,20 +20,31 @@ form.addEventListener("submit", (e) => {
 
   let intentoDato = document.createElement("p");
   intentoDato.innerText = input.value.toUpperCase();
-  if (input.value.toUpperCase() === nombre.toUpperCase()) {
-    console.log("Acertaste");
-    intentoDato.id = "correcto";
-    imagenPokemon.style.filter = "brightness(1)";
-    juegoContainer.appendChild(intentoDato);
-    form.removeChild(input);
-    input.value = "";
-  } else {
-    console.log("fallaste");
+  if (intentoNumero === 5) {
     tries.appendChild(intentoDato);
-    intentoNumero += 1;
-    input.value = "";
+    form.removeChild(input);
+  } else {
+    if (input.value.toUpperCase() === nombre.toUpperCase()) {
+      intentoDato.id = "correcto";
+      imagenPokemon.style.filter = "brightness(1)";
+      juegoContainer.appendChild(intentoDato);
+      form.removeChild(input);
+      input.value = "";
+    } else {
+      tries.appendChild(intentoDato);
+      intentoNumero += 1;
+      input.value = "";
+    }
   }
 });
+
+function pokeLog(datos) {
+  nombre = datos.name;
+  imagenPokemon.src = datos.sprites.front_default;
+  imagenPokemon.id = "pokemon";
+  pokemon.appendChild(imagenPokemon);
+  agregarTipos(datos);
+}
 
 function agregarTipos(datos) {
   datos.types.forEach((element) => {
