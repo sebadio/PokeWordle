@@ -1,4 +1,56 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: sans-serif;
+}
+
 body {
   background-color: #1e1e1e;
   color: white;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  height: 100vh;
+}
+
+.container {
+  display: flex;
+  flex-direction: column;
+  margin: 10px;
+  padding: 10px;
+  border: 1px solid white;
+  width: max-content;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+}
+
+.juegoContainer {
+  display: flex;
+  flex-direction: column;
+  color: red;
+}
+
+.tries {
+  margin: 10px;
+}
+
+.juegoContainer input {
+  all: unset;
+  border: 1px solid white;
+  color: white;
+  padding: 5px;
+}
+
+#correcto {
+  color: green;
+}
+
+#pokemon {
+  filter: brightness(100);
+  -webkit-user-drag: none;
+  user-select: none;
+  transition: filter 0.6s;
 }
