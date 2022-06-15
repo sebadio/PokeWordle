@@ -197,7 +197,7 @@ function comprobarRespuesta() {
     siguienteLetra = 0;
 
     if (triesRemaining === 0) {
-      popup(`Te quedaste sin intentos, el Pokemon era ${nombre}`, "red");
+      popup(`Te quedaste sin intentos, el Pokemon era ${nombre.toUpperCase()}`, "red");
       imagenPokemon.style.filter = "contrast(1)";
     }
   }
