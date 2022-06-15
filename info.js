@@ -1,0 +1,85 @@
+const info = document.querySelector("#info");
+const body = document.querySelector("body");
+const colores = ["#6aaa64", "#c9b458", "#818384"];
+const nombreEjemplo = Array.from("Gible");
+
+const fondoNegro = document.createElement("div");
+fondoNegro.id = "fondoNegro";
+
+const explicacionDiv = document.createElement("div");
+fondoNegro.appendChild(explicacionDiv);
+explicacionDiv.id = "explicacion";
+
+const explicacionParagrafo = document.createElement("p");
+explicacionParagrafo.innerText =
+  "Adivina el Pokemon oculto en seis intentos. Despues de cada intento las letras cambian de color para mostrate que tan cerca estas de la respuesta:";
+explicacionDiv.appendChild(explicacionParagrafo);
+
+const divBoxes = document.createElement("div");
+divBoxes.style.display = "flex";
+divBoxes.style.flexDirection = "column";
+divBoxes.style.justifyContent = "space-evenly";
+divBoxes.style.padding = "1rem";
+explicacionDiv.appendChild(divBoxes);
+
+info.addEventListener("click", () => {
+  body.appendChild(fondoNegro);
+});
+
+fondoNegro.addEventListener("click", () => {
+  fondoNegro.parentElement.removeChild(fondoNegro);
+});
+
+dibujarEjemplo();
+
+function dibujarEjemplo() {
+  colores.forEach((element) => {
+    let containerExplacion = document.createElement("div");
+    containerExplacion.style.display = "flex";
+    containerExplacion.style.justifyContent = "center";
+    containerExplacion.style.alignItems = "center";
+    containerExplacion.style.flexDirection = "column";
+    containerExplacion.style.padding = "1.1rem";
+
+    let row = document.createElement("div");
+    row.style.display = "flex";
+    row.style.flexDirection = "row";
+
+    let textoDescriptivo = document.createElement("p");
+    textoDescriptivo.innerText = descripcionColores(element);
+    textoDescriptivo.style.padding = "10px 0px";
+
+    for (let i = 0; i < 5; i++) {
+      let box = document.createElement("div");
+      box.className = "box";
+      if (i === 2) {
+        box.style.backgroundColor = element;
+      } else {
+        box.style.backgroundColor = "#1e1e1e";
+      }
+      box.textContent = nombreEjemplo[i];
+
+      row.appendChild(box);
+
+      containerExplacion.appendChild(row);
+    }
+    divBoxes.appendChild(containerExplacion);
+    containerExplacion.appendChild(textoDescriptivo);
+  });
+}
+
+function descripcionColores(element) {
+  switch (element) {
+    case "#6aaa64":
+      return "Si la letra esta en verde significa que tanto la posicion como la letra son correctas.";
+
+    case "#c9b458":
+      return "Si la letra esta en amarillo significa que la letra esta en la palabra pero no esta en la posicion correcta.";
+
+    case "#818384":
+      return "Si la letra esta gris significa que la letra no esta dentro de la palabra.";
+
+    default:
+      break;
+  }
+}

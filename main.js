@@ -155,9 +155,9 @@ function comprobarRespuesta() {
   }
 
   if (intentoString.length != nombre.length) {
-    popup("El intento actual no tiene las suficientes letras", "#dec254");
+    popup("El intento actual no tiene las suficientes letras", "#dec254", false);
     setTimeout(() => {
-      document.querySelector("body").removeChild(document.querySelector("#popup"));
+      document.querySelector("#popup").parentElement.removeChild(document.querySelector("#popup"));
     }, 2500);
     return;
   }
@@ -187,7 +187,7 @@ function comprobarRespuesta() {
   }
 
   if (intentoString === nombre) {
-    popup("Adivinaste correctamente, Felicidades!", "green");
+    popup("Adivinaste correctamente, Felicidades!", "green", true);
     imagenPokemon.style.filter = "contrast(1)";
     triesRemaining = 0;
     return;
@@ -197,7 +197,7 @@ function comprobarRespuesta() {
     siguienteLetra = 0;
 
     if (triesRemaining === 0) {
-      popup(`Te quedaste sin intentos, el Pokemon era ${nombre.toUpperCase()}`, "red");
+      popup(`Te quedaste sin intentos, el Pokemon era ${nombre.toUpperCase()}`, "red", true);
       imagenPokemon.style.filter = "contrast(1)";
     }
   }

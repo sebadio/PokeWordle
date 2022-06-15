@@ -1,8 +1,13 @@
-function popup(mensaje, color) {
+function popup(mensaje, color, juegoTerminado) {
   let popup = document.createElement("div");
   popup.id = "popup";
   popup.style.backgroundColor = color;
 
-  popup.textContent = mensaje;
-  document.querySelector("body").appendChild(popup);
+  if (juegoTerminado === true) {
+    popup.innerHTML = mensaje + ` <button onclick="location.reload()"> Volver a Jugar </button>`;
+  } else {
+    popup.innerHTML = mensaje;
+  }
+
+  document.querySelector(".pokeWordle").appendChild(popup);
 }
