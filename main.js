@@ -40,41 +40,41 @@ function agregarTipos(datos) {
 function fotosTipo(element) {
   switch (element.type.name) {
     case "steel":
-      return "/media/tipos/Tipo_acero.webp";
+      return "/PokeWordle/media/tipos/Tipo_acero.webp";
     case "water":
-      return "/media/tipos/Tipo_agua.webp";
+      return "/PokeWordle/media/tipos/Tipo_agua.webp";
     case "bug":
-      return "/media/tipos/Tipo_bicho.webp";
+      return "/PokeWordle/media/tipos/Tipo_bicho.webp";
     case "dragon":
-      return "/media/tipos/Tipo_dragon.webp";
+      return "/PokeWordle/media/tipos/Tipo_dragon.webp";
     case "electric":
-      return "/media/tipos/Tipo_electrico.webp";
+      return "/PokeWordle/media/tipos/Tipo_electrico.webp";
     case "ghost":
-      return "/media/tipos/Tipo_fantasma.webp";
+      return "/PokeWordle/media/tipos/Tipo_fantasma.webp";
     case "fire":
-      return "/media/tipos/Tipo_fuego.webp";
+      return "/PokeWordle/media/tipos/Tipo_fuego.webp";
     case "fairy":
-      return "/media/tipos/Tipo_hada.webp";
+      return "/PokeWordle/media/tipos/Tipo_hada.webp";
     case "ice":
-      return "/media/tipos/Tipo_hielo.webp";
+      return "/PokeWordle/media/tipos/Tipo_hielo.webp";
     case "fighting":
-      return "/media/tipos/Tipo_lucha.webp";
+      return "/PokeWordle/media/tipos/Tipo_lucha.webp";
     case "normal":
-      return "/media/tipos/Tipo_normal.webp";
+      return "/PokeWordle/media/tipos/Tipo_normal.webp";
     case "grass":
-      return "/media/tipos/Tipo_planta.webp";
+      return "/PokeWordle/media/tipos/Tipo_planta.webp";
     case "psychic":
-      return "/media/tipos/Tipo_psiquico.webp";
+      return "/PokeWordle/media/tipos/Tipo_psiquico.webp";
     case "rock":
-      return "/media/tipos/Tipo_roca.webp";
+      return "/PokeWordle/media/tipos/Tipo_roca.webp";
     case "dark":
-      return "/media/tipos/Tipo_siniestro.webp";
+      return "/PokeWordle/media/tipos/Tipo_siniestro.webp";
     case "ground":
-      return "/media/tipos/Tipo_tierra.webp";
+      return "/PokeWordle/media/tipos/Tipo_tierra.webp";
     case "poison":
-      return "/media/tipos/Tipo_veneno.webp";
+      return "/PokeWordle/media/tipos/Tipo_veneno.webp";
     case "flying":
-      return "/media/tipos/Tipo_volador.webp";
+      return "/PokeWordle/media/tipos/Tipo_volador.webp";
 
     default:
       break;
