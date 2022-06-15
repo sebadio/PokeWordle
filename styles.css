@@ -13,6 +13,7 @@ body {
   align-items: center;
   flex-direction: column;
   height: 100vh;
+  max-width: 100%;
 }
 
 .container {
@@ -30,7 +31,7 @@ body {
 .juegoContainer {
   display: flex;
   flex-direction: column;
-  color: red;
+  color: white;
 }
 
 .tries {
@@ -49,8 +50,89 @@ body {
 }
 
 #pokemon {
-  filter: brightness(100);
+  filter: contrast(0);
   -webkit-user-drag: none;
   user-select: none;
   transition: filter 0.6s;
+}
+
+#tabla {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+}
+
+.row-boxes {
+  display: flex;
+}
+
+.box {
+  border: 2px solid gray;
+  border-radius: 10px;
+  margin: 2.5px;
+  font-size: 2.2rem;
+  font-weight: 700;
+  height: 3rem;
+  width: 3rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-transform: uppercase;
+}
+
+.box-rellena {
+  border: 2px solid white;
+  transition: all 350ms;
+}
+
+#teclado {
+  margin: 1rem 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 90%;
+  max-width: 90%;
+}
+
+#teclado div {
+  display: flex;
+}
+
+.second-row {
+  margin: 0.5rem 0;
+}
+
+.teclado-boton {
+  font-size: 1rem;
+  font-weight: 700;
+  padding: 1rem;
+  margin: 0 2px;
+  border-radius: 4px;
+  border: none;
+  cursor: pointer;
+  text-transform: uppercase;
+}
+
+#popup {
+  position: fixed;
+  top: 10px;
+  height: max-content;
+  width: max-content;
+  padding: 2rem;
+  border-radius: 12px;
+  order: -1;
+  font-weight: 700;
+  transition: all 250ms;
+}
+
+@media screen and (max-width: 500px) {
+  .box {
+    height: 2.2rem;
+    width: 2.2rem;
+    font-size: 0.8rem;
+  }
+
+  .teclado-boton {
+    padding: 0.4rem;
+  }
 }
