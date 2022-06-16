@@ -22,7 +22,6 @@ function jugar() {
 function checkPokemon(datos) {
   if (window.innerWidth <= 500) {
     if (datos.name.length > 8) {
-      console.log(datos);
       jugar();
     } else {
       pokeLog(datos);
