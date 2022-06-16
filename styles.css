@@ -8,24 +8,32 @@
 body {
   background-color: #1e1e1e;
   color: white;
-  /* display: flex;
-  justify-content: center;
-  align-items: center;
-  flex-direction: column; */
   height: 100vh;
   max-width: 100%;
 }
 
-.info h3 {
+.info {
   position: fixed;
-  top: 10px;
-  left: 10px;
-  font-size: 3rem;
+  top: 20px;
+  left: 20px;
+  border: 3px solid white;
+  border-radius: 50%;
+  aspect-ratio: 1/1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 50px;
+  height: 50px;
+  transition: all 250ms;
 }
 
-.info h3:hover {
+.info:hover {
   transform: scale(1.1);
-  cursor: pointer;
+}
+
+.info h3 {
+  font-size: 3rem;
+  padding: 0 30px;
 }
 
 .pokeWordle {
@@ -109,8 +117,7 @@ body {
   display: flex;
   flex-direction: column;
   align-items: center;
-  width: 90%;
-  max-width: 90%;
+  width: min(600px, 70%);
 }
 
 #teclado div {
@@ -124,7 +131,7 @@ body {
 .teclado-boton {
   font-size: 1rem;
   font-weight: 700;
-  padding: 1rem;
+  padding: 1.2rem;
   margin: 0 2px;
   border-radius: 4px;
   border: none;
@@ -197,7 +204,7 @@ footer a {
   }
 
   .teclado-boton {
-    padding: 0.4rem;
+    padding: 2vw;
   }
 
   footer {
