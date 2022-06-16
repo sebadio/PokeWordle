@@ -116,10 +116,26 @@ document.addEventListener("keyup", (e) => {
   }
 
   let encontrada = pressedKey.match(/[a-z]/gi);
-  if (!encontrada || encontrada.length > 1) {
+  if (
+    pressedKey === "F2" ||
+    pressedKey === "F3" ||
+    pressedKey === "F4" ||
+    pressedKey === "F5" ||
+    pressedKey === "F6" ||
+    pressedKey === "F7" ||
+    pressedKey === "F8" ||
+    pressedKey === "F9" ||
+    pressedKey === "F10" ||
+    pressedKey === "F11" ||
+    pressedKey === "F12"
+  ) {
     return;
   } else {
-    insertarLetra(pressedKey);
+    if (!encontrada || encontrada.length > 1) {
+      return;
+    } else {
+      insertarLetra(pressedKey);
+    }
   }
 });
 
