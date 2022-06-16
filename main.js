@@ -8,16 +8,28 @@ let actualTry = [];
 let nombre = "";
 let triesRemaining = numeroDeTries;
 let siguienteLetra = 0;
-let numeroRandom = Math.floor(Math.random() * 898);
 
 window.onload = () => {
   jugar();
 };
 
 function jugar() {
-  fetch(`https://pokeapi.co/api/v2/pokemon/${numeroRandom}/`)
+  fetch(`https://pokeapi.co/api/v2/pokemon/${Math.floor(Math.random() * 898)}/`)
     .then((respuesta) => respuesta.json())
-    .then((datos) => pokeLog(datos));
+    .then((datos) => checkPokemon(datos));
+}
+
+function checkPokemon(datos) {
+  if (window.innerWidth <= 500) {
+    if (datos.name.length > 8) {
+      console.log(datos);
+      jugar();
+    } else {
+      pokeLog(datos);
+    }
+  } else {
+    pokeLog();
+  }
 }
 
 function pokeLog(datos) {
