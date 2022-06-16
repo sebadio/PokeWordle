@@ -28,7 +28,7 @@ function checkPokemon(datos) {
       pokeLog(datos);
     }
   } else {
-    pokeLog();
+    pokeLog(datos);
   }
 }
 
