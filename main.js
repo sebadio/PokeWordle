@@ -126,7 +126,7 @@ document.addEventListener("keyup", (e) => {
     return;
   }
 
-  let encontrada = pressedKey.match(/[a-z]/gi);
+  let encontrada = pressedKey.match(/[a-z-]/gi);
   if (
     pressedKey === "F2" ||
     pressedKey === "F3" ||
