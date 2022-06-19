@@ -32,7 +32,7 @@ function checkPokemon(datos) {
 }
 
 function pokeLog(datos) {
-  nombre = datos.name;
+  nombre = datos.species.name;
   imagenPokemon.src = datos.sprites.front_default;
   imagenPokemon.id = "pokemon";
   pokemon.appendChild(imagenPokemon);
@@ -207,15 +207,21 @@ function comprobarRespuesta() {
 
     correcto[posicionLetra] = "#";
 
-    let retraso = 300 * i;
+    let retraso = 250 * i;
     setTimeout(() => {
-      box.style.backgroundColor = colorDeLetra;
+      box.classList.add("animacion");
+      setTimeout(() => {
+        box.style.backgroundColor = colorDeLetra;
+      }, 250);
+      colorearLetraTeclado(letra, colorDeLetra);
     }, retraso);
   }
 
   if (intentoString === nombre) {
-    popup("Adivinaste correctamente, Felicidades!", "green", true);
-    imagenPokemon.style.filter = "contrast(1)";
+    setTimeout(() => {
+      popup("Adivinaste correctamente, Felicidades!", "green", true);
+      imagenPokemon.style.filter = "contrast(1)";
+    }, nombre.length * 250);
     triesRemaining = 0;
     return;
   } else {
@@ -224,8 +230,10 @@ function comprobarRespuesta() {
     siguienteLetra = 0;
 
     if (triesRemaining === 0) {
-      popup(`Te quedaste sin intentos, el Pokemon era ${nombre.toUpperCase()}`, "red", true);
-      imagenPokemon.style.filter = "contrast(1)";
+      setTimeout(() => {
+        popup(`Te quedaste sin intentos, el Pokemon era ${nombre.toUpperCase()}`, "red", true);
+        imagenPokemon.style.filter = "contrast(1)";
+      }, nombre.length * 250);
     }
   }
 }
@@ -244,3 +252,21 @@ document.getElementById("teclado").addEventListener("click", (e) => {
 
   document.dispatchEvent(new KeyboardEvent("keyup", { key: key }));
 });
+
+function colorearLetraTeclado(letra, color) {
+  document.querySelectorAll(".teclado-boton").forEach((element) => {
+    if (letra === element.textContent) {
+      let colorAnterior = element.style.backgroundColor;
+
+      if (colorAnterior === "rgb(106, 170, 100)") {
+        return;
+      }
+
+      if (colorAnterior === "rgb(201, 180, 88)" && color !== "#6aaa64") {
+        return;
+      }
+
+      element.style.backgroundColor = color;
+    }
+  });
+}

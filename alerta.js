@@ -1,6 +1,7 @@
 function popup(mensaje, color, juegoTerminado) {
   let popup = document.createElement("div");
   popup.id = "popup";
+  popup.classList.add("animacionPopup");
   popup.style.backgroundColor = color;
 
   if (juegoTerminado === true) {

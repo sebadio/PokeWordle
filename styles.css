@@ -137,6 +137,8 @@ body {
   border: none;
   cursor: pointer;
   text-transform: uppercase;
+  background-color: white;
+  transition: all 250ms ease;
 }
 
 #popup {
@@ -171,6 +173,10 @@ footer {
 footer a {
   text-decoration: none;
   color: coral;
+}
+
+footer label {
+  filter: opacity(0.3);
 }
 
 #fondoNegro {
@@ -213,5 +219,34 @@ footer a {
 
   #explicacion {
     max-width: 95vw;
+  }
+}
+
+.animacion {
+  animation: flip 0.5s ease;
+}
+
+@keyframes flip {
+  0% {
+    transform: scaleY(1);
+  }
+  50% {
+    transform: scaleY(0);
+  }
+  100% {
+    transform: scaleY(1);
+  }
+}
+
+.animacionPopup {
+  animation: popupGoDown 250ms ease;
+}
+
+@keyframes popupGoDown {
+  0% {
+    transform: translateY(-150px);
+  }
+  100% {
+    transform: translateY(0px);
   }
 }
