@@ -7,8 +7,9 @@ const fondoNegro = document.createElement("div");
 fondoNegro.id = "fondoNegro";
 
 const explicacionDiv = document.createElement("div");
-fondoNegro.appendChild(explicacionDiv);
+explicacionDiv.classList.add("animacionInfo");
 explicacionDiv.id = "explicacion";
+fondoNegro.appendChild(explicacionDiv);
 
 const explicacionParagrafo = document.createElement("p");
 explicacionParagrafo.innerText =
@@ -24,6 +25,9 @@ explicacionDiv.appendChild(divBoxes);
 
 info.addEventListener("click", () => {
   body.appendChild(fondoNegro);
+  // setTimeout(() => {
+  //   explicacionDiv.classList.add("animacionInfo");
+  // }, 250);
 });
 
 fondoNegro.addEventListener("click", () => {
@@ -34,12 +38,12 @@ dibujarEjemplo();
 
 function dibujarEjemplo() {
   colores.forEach((element) => {
-    let containerExplacion = document.createElement("div");
-    containerExplacion.style.display = "flex";
-    containerExplacion.style.justifyContent = "center";
-    containerExplacion.style.alignItems = "center";
-    containerExplacion.style.flexDirection = "column";
-    containerExplacion.style.padding = "1.1rem";
+    let containerExplicacion = document.createElement("div");
+    containerExplicacion.style.display = "flex";
+    containerExplicacion.style.justifyContent = "center";
+    containerExplicacion.style.alignItems = "center";
+    containerExplicacion.style.flexDirection = "column";
+    containerExplicacion.style.padding = "1.1rem";
 
     let row = document.createElement("div");
     row.style.display = "flex";
@@ -61,10 +65,10 @@ function dibujarEjemplo() {
 
       row.appendChild(box);
 
-      containerExplacion.appendChild(row);
+      containerExplicacion.appendChild(row);
     }
-    divBoxes.appendChild(containerExplacion);
-    containerExplacion.appendChild(textoDescriptivo);
+    divBoxes.appendChild(containerExplicacion);
+    containerExplicacion.appendChild(textoDescriptivo);
   });
 }
 

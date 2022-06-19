@@ -224,6 +224,7 @@ footer label {
 
 .animacion {
   animation: flip 0.5s ease;
+  border: 2px solid transparent;
 }
 
 @keyframes flip {
@@ -248,5 +249,20 @@ footer label {
   }
   100% {
     transform: translateY(0px);
+  }
+}
+
+.animacionInfo {
+  transform: translateX(0);
+  animation: openInfo 550ms ease;
+}
+
+@keyframes openInfo {
+  0% {
+    transform: scaleX(0);
+  }
+
+  100% {
+    transform: scaleX(1);
   }
 }
