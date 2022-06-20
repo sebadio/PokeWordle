@@ -124,11 +124,6 @@ body {
 }
 
 #teclado div {
-  /* display: flex;
-  gap: 2px;
-  width: 100%;
-  justify-content: center;
-  align-items: center; */
   display: grid;
   grid-template-columns: repeat(10, 1fr);
   margin: auto;
@@ -137,14 +132,6 @@ body {
   justify-items: stretch;
   padding: 0 0.3rem ;
 }
-
-.second-row {
-  /* margin: 0.5rem 0; */
-}
-
-/* .third-row{
-  grid-template-columns: repeat(9, 1fr);
-} */
 
 #enter{
   grid-column: span 2;
@@ -241,7 +228,9 @@ footer label {
   #explicacion {
     max-width: 95vw;
   }
+}
 
+@media screen and (max-width: 368px) {
   #enter{
     grid-column: span 1;
   }
