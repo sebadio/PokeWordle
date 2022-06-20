@@ -118,23 +118,43 @@ body {
   display: flex;
   flex-direction: column;
   align-items: center;
-  width: min(600px, 70%);
+  justify-content: center;
+  width: min(600px, 100%);
+  gap: 5px;
 }
 
 #teclado div {
-  display: flex;
+  /* display: flex;
+  gap: 2px;
+  width: 100%;
+  justify-content: center;
+  align-items: center; */
+  display: grid;
+  grid-template-columns: repeat(10, 1fr);
+  margin: auto;
+  gap: 2px;
+  width: 100%;
+  justify-items: stretch;
+  padding: 0 0.3rem ;
 }
 
 .second-row {
-  margin: 0.5rem 0;
+  /* margin: 0.5rem 0; */
+}
+
+/* .third-row{
+  grid-template-columns: repeat(9, 1fr);
+} */
+
+#enter{
+  grid-column: span 2;
 }
 
 .teclado-boton {
-  font-size: 1rem;
+  font-size: 1.1rem;
   font-weight: 700;
-  padding: 1.2rem;
-  margin: 0 2px;
-  border-radius: 4px;
+  padding: 1rem;
+  border-radius: 3px;
   border: none;
   cursor: pointer;
   text-transform: uppercase;
@@ -220,6 +240,10 @@ footer label {
 
   #explicacion {
     max-width: 95vw;
+  }
+
+  #enter{
+    grid-column: span 1;
   }
 }
 
