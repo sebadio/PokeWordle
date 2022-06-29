@@ -130,10 +130,10 @@ body {
   gap: 2px;
   width: 100%;
   justify-items: stretch;
-  padding: 0 0.3rem ;
+  padding: 0 0.3rem;
 }
 
-#enter{
+#enter {
   grid-column: span 2;
 }
 
@@ -231,7 +231,7 @@ footer label {
 }
 
 @media screen and (max-width: 368px) {
-  #enter{
+  #enter {
     grid-column: span 1;
   }
 }

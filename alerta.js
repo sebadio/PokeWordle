@@ -5,7 +5,8 @@ function popup(mensaje, color, juegoTerminado) {
   popup.style.backgroundColor = color;
 
   if (juegoTerminado === true) {
-    popup.innerHTML = mensaje + ` <button onclick="location.reload()"> Volver a Jugar </button>`;
+    popup.innerHTML =
+      mensaje + ` <button onclick="playAgain()"> Volver a Jugar </button>`;
   } else {
     popup.innerHTML = mensaje;
   }

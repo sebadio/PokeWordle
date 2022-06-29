@@ -3,6 +3,7 @@ const imagenPokemon = document.createElement("img");
 const juegoContainer = document.querySelector(".juegoContainer");
 const conteinerTipos = document.querySelector(".tipos");
 const numeroDeTries = 6;
+const tecladoInnerHTML = document.querySelector("#teclado").innerHTML;
 
 let actualTry = [];
 let nombre = "";
@@ -35,6 +36,7 @@ function pokeLog(datos) {
   nombre = datos.species.name;
   imagenPokemon.src = datos.sprites.front_default;
   imagenPokemon.id = "pokemon";
+  imagenPokemon.style.filter = "contrast(0)";
   pokemon.appendChild(imagenPokemon);
   agregarTipos(datos);
   crearTabla();
@@ -182,9 +184,15 @@ function comprobarRespuesta() {
   }
 
   if (intentoString.length != nombre.length) {
-    popup("El intento actual no tiene las suficientes letras", "#dec254", false);
+    popup(
+      "El intento actual no tiene las suficientes letras",
+      "#dec254",
+      false
+    );
     setTimeout(() => {
-      document.querySelector("#popup").parentElement.removeChild(document.querySelector("#popup"));
+      document
+        .querySelector("#popup")
+        .parentElement.removeChild(document.querySelector("#popup"));
     }, 2500);
     return;
   }
@@ -231,7 +239,11 @@ function comprobarRespuesta() {
 
     if (triesRemaining === 0) {
       setTimeout(() => {
-        popup(`Te quedaste sin intentos, el Pokemon era ${nombre.toUpperCase()}`, "red", true);
+        popup(
+          `Te quedaste sin intentos, el Pokemon era ${nombre.toUpperCase()}`,
+          "red",
+          true
+        );
         imagenPokemon.style.filter = "contrast(1)";
       }, nombre.length * 250);
     }
@@ -269,4 +281,30 @@ function colorearLetraTeclado(letra, color) {
       element.style.backgroundColor = color;
     }
   });
+}
+
+function borrarTablaYDatos() {
+  document
+    .querySelector("#tabla")
+    .parentElement.removeChild(document.querySelector("#tabla"));
+  document
+    .querySelector("#pokemon")
+    .parentElement.removeChild(document.querySelector("#pokemon"));
+
+  Array.from(conteinerTipos.children).forEach((element) => {
+    element.parentElement.removeChild(element);
+  });
+
+  document
+    .querySelector("#popup")
+    .parentElement.removeChild(document.querySelector("#popup"));
+}
+
+function playAgain() {
+  borrarTablaYDatos();
+  triesRemaining = numeroDeTries;
+  siguienteLetra = 0;
+  actualTry = [];
+  document.querySelector("#teclado").innerHTML = tecladoInnerHTML;
+  jugar();
 }
