@@ -169,6 +169,27 @@ body {
   text-decoration: underline;
 }
 
+.spinner {
+  margin: auto;
+  padding: 1rem;
+  aspect-ratio: 1/1;
+  border-radius: 50%;
+  border: 0.45rem solid #1e1e1e;
+  border-top-color: #fff;
+  border-right-color: #fff;
+  animation: spinner 1s infinite linear;
+}
+
+@keyframes spinner {
+  0% {
+    transform: rotate(0deg);
+  }
+
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
 footer {
   position: fixed;
   padding: 1rem;

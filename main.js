@@ -10,11 +10,22 @@ let nombre = "";
 let triesRemaining = numeroDeTries;
 let siguienteLetra = 0;
 
+const spinner = document.querySelector(".spinner");
+
+const showSpinner = () => {
+  spinner.style.display = "block";
+};
+
+const hideSpinner = () => {
+  spinner.style.display = "none";
+};
+
 window.onload = () => {
   jugar();
 };
 
 function jugar() {
+  showSpinner();
   fetch(`https://pokeapi.co/api/v2/pokemon/${Math.floor(Math.random() * 898)}/`)
     .then((respuesta) => respuesta.json())
     .then((datos) => checkPokemon(datos));
@@ -38,6 +49,7 @@ function pokeLog(datos) {
   imagenPokemon.id = "pokemon";
   imagenPokemon.style.filter = "contrast(0)";
   pokemon.appendChild(imagenPokemon);
+  hideSpinner();
   agregarTipos(datos);
   crearTabla();
 }
