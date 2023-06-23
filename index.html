@@ -1,83 +1,80 @@
 <!DOCTYPE html>
-<html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>PokeWordle</title>
-    <link rel="stylesheet" href="styles.css" />
-    <link rel="shortcut icon" href="media/favicon.png" type="image/x-icon" />
-  </head>
-  <body>
-    <div class="pokeWordle">
-      <div class="info">
-        <h3 id="info">i</h3>
+<html lang="es">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>PokeWordle</title>
+  <meta name="description"
+    content="Play a captivating Pokémon guessing game! Test your knowledge, deduction skills, and become a Pokémon master. Guess the names of Pokémon in limited attempts. Get feedback on correct and misplaced Pokémon names. Start playing now!">
+  <meta name="keywords" content="Pokémon guessing game, word puzzle, deduction, Pokémon master, español, english">
+  <link rel="stylesheet" href="styles.css" />
+  <link rel="shortcut icon" href="media/favicon.png" type="image/x-icon" />
+</head>
+
+<body>
+  <div class="pokeWordle">
+    <div class="info">
+      <h3 id="info">i</h3>
+    </div>
+    <div class="container">
+      <div class="pokemon">
+        <div class="spinner"></div>
       </div>
-      <div class="container">
-        <div class="pokemon">
-          <div class="spinner"></div>
-        </div>
-        <div class="tipos"></div>
+      <div class="tipos"></div>
+    </div>
+    <div class="juegoContainer"></div>
+    <div id="teclado">
+      <div class="first-row">
+        <button class="teclado-boton">q</button>
+        <button class="teclado-boton">w</button>
+        <button class="teclado-boton">e</button>
+        <button class="teclado-boton">r</button>
+        <button class="teclado-boton">t</button>
+        <button class="teclado-boton">y</button>
+        <button class="teclado-boton">u</button>
+        <button class="teclado-boton">i</button>
+        <button class="teclado-boton">o</button>
+        <button class="teclado-boton">p</button>
       </div>
-      <div class="juegoContainer"></div>
-      <div id="teclado">
-        <div class="first-row">
-          <button class="teclado-boton">q</button>
-          <button class="teclado-boton">w</button>
-          <button class="teclado-boton">e</button>
-          <button class="teclado-boton">r</button>
-          <button class="teclado-boton">t</button>
-          <button class="teclado-boton">y</button>
-          <button class="teclado-boton">u</button>
-          <button class="teclado-boton">i</button>
-          <button class="teclado-boton">o</button>
-          <button class="teclado-boton">p</button>
-        </div>
-        <div class="second-row">
-          <button class="teclado-boton">a</button>
-          <button class="teclado-boton">s</button>
-          <button class="teclado-boton">d</button>
-          <button class="teclado-boton">f</button>
-          <button class="teclado-boton">g</button>
-          <button class="teclado-boton">h</button>
-          <button class="teclado-boton">j</button>
-          <button class="teclado-boton">k</button>
-          <button class="teclado-boton">l</button>
-          <button class="teclado-boton">-</button>
-        </div>
-        <div class="third-row">
-          <button class="teclado-boton">Del</button>
-          <button class="teclado-boton">z</button>
-          <button class="teclado-boton">x</button>
-          <button class="teclado-boton">c</button>
-          <button class="teclado-boton">v</button>
-          <button class="teclado-boton">b</button>
-          <button class="teclado-boton">n</button>
-          <button class="teclado-boton">m</button>
-          <button class="teclado-boton" id="enter">Enter</button>
-        </div>
+      <div class="second-row">
+        <button class="teclado-boton">a</button>
+        <button class="teclado-boton">s</button>
+        <button class="teclado-boton">d</button>
+        <button class="teclado-boton">f</button>
+        <button class="teclado-boton">g</button>
+        <button class="teclado-boton">h</button>
+        <button class="teclado-boton">j</button>
+        <button class="teclado-boton">k</button>
+        <button class="teclado-boton">l</button>
+        <button class="teclado-boton">-</button>
+      </div>
+      <div class="third-row">
+        <button class="teclado-boton">Del</button>
+        <button class="teclado-boton">z</button>
+        <button class="teclado-boton">x</button>
+        <button class="teclado-boton">c</button>
+        <button class="teclado-boton">v</button>
+        <button class="teclado-boton">b</button>
+        <button class="teclado-boton">n</button>
+        <button class="teclado-boton">m</button>
+        <button class="teclado-boton" id="enter">Enter</button>
       </div>
     </div>
+  </div>
 
-    <footer>
-      Esta pagina utiliza
-      <a href="https://pokeapi.co/" target="_blank" rel="noopener noreferrer"
-        >PokeAPI</a
-      >, si las imagenes del Pokemon o sus tipos llegan a no cargar puede ser
-      que la API este en mantenimiento o que se haya caido. <br /><label
-        for="copy"
-        >Pagina hecha por
-        <a
-          href="https://github.com/Shivu-a"
-          target="_blank"
-          rel="noopener noreferrer"
-          >Sebastián Díaz Dopazo</a
-        ></label
-      >
-    </footer>
+  <footer>
+    Esta pagina utiliza
+    <a href="https://pokeapi.co/" target="_blank" rel="noopener noreferrer">PokeAPI</a>, si las imagenes del Pokemon o
+    sus tipos llegan a no cargar puede ser
+    que la API este en mantenimiento o que se haya caido. <br /><label for="copy">Pagina hecha por
+      <a href="https://github.com/Shivu-a" target="_blank" rel="noopener noreferrer">Sebastián Díaz Dopazo</a></label>
+  </footer>
 
-    <script src="info.js"></script>
-    <script src="alerta.js"></script>
-    <script src="main.js"></script>
-  </body>
+  <script src="info.js"></script>
+  <script src="alerta.js"></script>
+  <script src="main.js"></script>
+</body>
+
 </html>
