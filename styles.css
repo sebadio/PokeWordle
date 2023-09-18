@@ -1,3 +1,10 @@
+:root {
+  --bg-color: #121212;
+  --white: white;
+  --grey: #475569;
+  --footer-bg: #1f1f1f;
+}
+
 * {
   margin: 0;
   padding: 0;
@@ -6,8 +13,8 @@
 }
 
 body {
-  background-color: #1e1e1e;
-  color: white;
+  background-color: var(--bg-color);
+  color: var(--white);
   height: 100vh;
   max-width: 100%;
 }
@@ -16,7 +23,7 @@ body {
   position: fixed;
   top: 20px;
   left: 20px;
-  border: 3px solid white;
+  border: 3px solid var(--white);
   border-radius: 50%;
   aspect-ratio: 1/1;
   display: flex;
@@ -50,8 +57,9 @@ body {
   flex-direction: column;
   margin: 10px;
   padding: 10px;
-  border: 1px solid white;
-  width: max-content;
+  border: 1px solid var(--white);
+  width: max(7%, max-content);
+  height: 15%;
   justify-content: center;
   align-items: center;
   text-align: center;
@@ -60,7 +68,7 @@ body {
 .juegoContainer {
   display: flex;
   flex-direction: column;
-  color: white;
+  color: var(--white);
 }
 
 .tries {
@@ -69,8 +77,8 @@ body {
 
 .juegoContainer input {
   all: unset;
-  border: 1px solid white;
-  color: white;
+  border: 1px solid var(--white);
+  color: var(--white);
   padding: 5px;
 }
 
@@ -96,7 +104,7 @@ body {
 }
 
 .box {
-  border: 2px solid gray;
+  border: 2px solid var(--grey);
   margin: 2.5px;
   font-size: 2.2rem;
   font-weight: 700;
@@ -109,7 +117,7 @@ body {
 }
 
 .box-rellena {
-  border: 2px solid white;
+  border: 2px solid var(--white);
   transition: all 350ms;
 }
 
@@ -145,18 +153,22 @@ body {
   border: none;
   cursor: pointer;
   text-transform: uppercase;
-  background-color: white;
+  background-color: var(--grey);
   transition: all 250ms ease;
+  color: rgb(214, 214, 214);
 }
 
 #popup {
+  display: flex;
+  flex-direction: column;
+  gap: 0.4rem;
   position: fixed;
   top: 10px;
   height: max-content;
   width: max-content;
   max-width: 95%;
   text-align: center;
-  padding: 2rem;
+  padding: 1.3rem;
   border-radius: 12px;
   order: -1;
   font-weight: 700;
@@ -174,9 +186,9 @@ body {
   padding: 1rem;
   aspect-ratio: 1/1;
   border-radius: 50%;
-  border: 0.45rem solid #1e1e1e;
-  border-top-color: #fff;
-  border-right-color: #fff;
+  border: 0.45rem solid var(--bg-color);
+  border-top-color: var(--white);
+  border-right-color: var(--white);
   animation: spinner 1s infinite linear;
 }
 
@@ -195,7 +207,7 @@ footer {
   padding: 1rem;
   text-align: center;
   width: 100%;
-  background-color: #0e0e0e;
+  background-color: var(--footer-bg);
   bottom: 0px;
 }
 
@@ -300,4 +312,28 @@ footer label {
   100% {
     transform: scaleX(1);
   }
+}
+
+.warning {
+  background-color: #a8925d;
+}
+
+.danger {
+  background-color: #bd3226;
+}
+
+.safe {
+  background-color: #3d8233;
+}
+
+/*KEYBOARD*/
+
+.keySafe {
+  background-color: #3d8233;
+}
+.keyWrong {
+  background-color: #818384;
+}
+.keyWarning {
+  background-color: #a8925d;
 }
