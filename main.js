@@ -284,7 +284,7 @@ const handleLetter = (i, correcto, row) => {
   const letra = actualTry[i];
   let changed = false;
 
-  const posicionLetra = correcto.indexOf(actualTry[i]);
+  const posicionLetra = correcto.indexOf(actualTry[i], i);
   if (posicionLetra === -1) {
     colorDeLetra = "keyWrong";
     changed = true;
