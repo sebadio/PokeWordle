@@ -337,3 +337,7 @@ footer label {
 .keyWarning {
   background-color: #a8925d;
 }
+
+.hide {
+  display: none;
+}

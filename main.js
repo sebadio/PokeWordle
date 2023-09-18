@@ -3,7 +3,6 @@ const danger = "Te quedaste sin intentos, el Pokemon era ";
 const safe = "Adivinaste correctamente, Felicidades!";
 
 const pokemon = document.querySelector(".pokemon");
-const imagenPokemon = document.createElement("img");
 const juegoContainer = document.querySelector(".juegoContainer");
 const conteinerTipos = document.querySelector(".tipos");
 const numeroDeTries = 6;
@@ -49,11 +48,13 @@ const checkPokemon = (datos) => {
 }
 
 const pokeLog = (datos) => {
+  const imagenPokemon = document.getElementById("pokemon");
+
   nombre = datos.species.name;
   imagenPokemon.src = datos.sprites.front_default;
   imagenPokemon.id = "pokemon";
   imagenPokemon.style.filter = "contrast(0)";
-  imagenPokemon.alt = "Secret Pokemon";
+  imagenPokemon.classList.remove("hide");
   pokemon.appendChild(imagenPokemon);
   hideSpinner();
   agregarTipos(datos);
@@ -66,6 +67,8 @@ const agregarTipos = (datos) => {
     const tipoImg = document.createElement("img");
     tipoImg.src = `media/tipos/${typeName}.webp`;
     tipoImg.alt = `${typeName} Type`
+    tipoImg.width = "48";
+    tipoImg.height = "18";
     conteinerTipos.appendChild(tipoImg);
   });
 }
@@ -114,6 +117,8 @@ const comprobarRespuesta = () => {
   const row = document.getElementsByClassName("row-boxes")[6 - triesRemaining];
   let intentoString = actualTry.join("");
   const correcto = nombre;
+  const imagenPokemon = document.getElementById("pokemon");
+
 
   if (intentoString.length != nombre.length) {
     popup(
@@ -176,9 +181,7 @@ const borrarTablaYDatos = () => {
   document
     .querySelector("#tabla")
     .parentElement.removeChild(document.querySelector("#tabla"));
-  document
-    .querySelector("#pokemon")
-    .parentElement.removeChild(document.querySelector("#pokemon"));
+  document.getElementById("pokemon").classList.add("hide");
 
   Array.from(conteinerTipos.children).forEach((element) => {
     element.parentElement.removeChild(element);
