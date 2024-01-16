@@ -23,28 +23,13 @@ const hideSpinner = () => {
   spinner.style.display = "none";
 };
 
-const jugar = () => {
+const jugar = async () => {
   showSpinner();
-  fetch(`https://pokeapi.co/api/v2/pokemon/${Math.floor(Math.random() * 898)}/`)
-    .then((respuesta) => respuesta.json())
-    .then((datos) => checkPokemon(datos)).catch(err => {
-      if (err) {
-        console.log(err);
-        jugar();
-      }
-    })
-}
-
-const checkPokemon = (datos) => {
-  if (window.innerWidth <= 500) {
-    if (datos.name.length > 8) {
-      jugar();
-    } else {
-      pokeLog(datos);
-    }
-  } else {
-    pokeLog(datos);
-  }
+  const res = await fetch(`https://pokeapi.co/api/v2/pokemon/${Math.floor(Math.random() * 898)}/`)
+  if (!res || res.status === 404) jugar();
+  const data = await res.json();
+  if (!data) jugar();
+  pokeLog(data);
 }
 
 const pokeLog = (datos) => {
