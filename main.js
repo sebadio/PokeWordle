@@ -15,24 +15,24 @@ let siguienteLetra = 0;
 
 const spinner = document.querySelector(".spinner");
 
-const showSpinner = () => {
+function showSpinner() {
   spinner.style.display = "block";
 };
 
-const hideSpinner = () => {
+function hideSpinner() {
   spinner.style.display = "none";
 };
 
-const jugar = async () => {
+async function jugar() {
   showSpinner();
-  const res = await fetch(`https://pokeapi.co/api/v2/pokemon/${Math.floor(Math.random() * 898)}/`)
+  const res = await fetch(`https://pokeapi.co/api/v2/pokemon/${Math.floor(Math.random() * 1000)}/`)
   if (!res || res.status === 404) jugar();
   const data = await res.json();
   if (!data) jugar();
   pokeLog(data);
 }
 
-const pokeLog = (datos) => {
+function pokeLog(datos) {
   const imagenPokemon = document.getElementById("pokemon");
 
   nombre = datos.species.name;
@@ -46,7 +46,7 @@ const pokeLog = (datos) => {
   crearTabla();
 }
 
-const agregarTipos = (datos) => {
+function agregarTipos(datos) {
   datos.types.forEach((element) => {
     const typeName = element.type.name;
     const tipoImg = document.createElement("img");
@@ -58,7 +58,7 @@ const agregarTipos = (datos) => {
   });
 }
 
-const crearTabla = () => {
+function crearTabla() {
   const tabla = document.createElement("div");
   tabla.id = "tabla";
 
@@ -76,7 +76,7 @@ const crearTabla = () => {
   juegoContainer.appendChild(tabla);
 }
 
-const insertarLetra = (key) => {
+function insertarLetra(key) {
   if (siguienteLetra === nombre.length) {
     return;
   }
@@ -89,7 +89,7 @@ const insertarLetra = (key) => {
   siguienteLetra += 1;
 }
 
-const borrarLetra = () => {
+function borrarLetra() {
   const row = document.getElementsByClassName("row-boxes")[6 - triesRemaining];
   const box = row.children[siguienteLetra - 1];
   box.textContent = "";
@@ -98,7 +98,7 @@ const borrarLetra = () => {
   siguienteLetra -= 1;
 }
 
-const comprobarRespuesta = () => {
+function comprobarRespuesta() {
   const row = document.getElementsByClassName("row-boxes")[6 - triesRemaining];
   let intentoString = actualTry.join("");
   const correcto = nombre;
@@ -142,7 +142,7 @@ const comprobarRespuesta = () => {
   }
 }
 
-const colorearLetraTeclado = (letra, color) => {
+function colorearLetraTeclado(letra, color) {
   document.querySelectorAll(".teclado-boton").forEach((element) => {
     if (letra === element.textContent) {
 
@@ -162,7 +162,7 @@ const colorearLetraTeclado = (letra, color) => {
   });
 }
 
-const borrarTablaYDatos = () => {
+function borrarTablaYDatos() {
   document
     .querySelector("#tabla")
     .parentElement.removeChild(document.querySelector("#tabla"));
@@ -177,7 +177,7 @@ const borrarTablaYDatos = () => {
     .parentElement.removeChild(document.querySelector("#popup"));
 }
 
-const playAgain = () => {
+function playAgain() {
   borrarTablaYDatos();
   triesRemaining = numeroDeTries;
   siguienteLetra = 0;
@@ -192,7 +192,7 @@ const popup = (mensaje, type, juegoTerminado) => {
   popup.className = `animacionPopup ${type}`
   popup.appendChild(document.createTextNode(mensaje));
 
-  if (juegoTerminado === true) {
+  if (juegoTerminado) {
     const boton = document.createElement("button");
     boton.innerHTML = " Jugar de nuevo ";
     boton.addEventListener("click", playAgain)
@@ -210,62 +210,38 @@ const popup = (mensaje, type, juegoTerminado) => {
   }
 }
 
-const handleKeyUp = (e) => {
-  if (triesRemaining === 0) {
-    return;
-  }
+function handleKeyUp(e) {
+  if (triesRemaining === 0) return;
 
-  const pressedKey = String(e.key);
-  if (pressedKey === "Backspace" && siguienteLetra !== 0) {
+  const pressedKey = String(e.key).toLowerCase();
+  if (pressedKey === "backspace" && siguienteLetra !== 0) {
     borrarLetra();
     return;
   }
 
-  if (pressedKey === "Enter") {
+  if (pressedKey === "enter") {
     comprobarRespuesta();
     return;
   }
 
   let encontrada = pressedKey.match(/[a-z-]/gi);
-  if (
-    pressedKey === "F2" ||
-    pressedKey === "F3" ||
-    pressedKey === "F4" ||
-    pressedKey === "F5" ||
-    pressedKey === "F6" ||
-    pressedKey === "F7" ||
-    pressedKey === "F8" ||
-    pressedKey === "F9" ||
-    pressedKey === "F10" ||
-    pressedKey === "F11" ||
-    pressedKey === "F12"
-  ) {
-    return;
-  } else {
-    if (!encontrada || encontrada.length > 1) {
-      return;
-    } else {
-      insertarLetra(pressedKey);
-    }
-  }
+  if (pressedKey.match(/f..?/gi || pressedKey === "capslock")) return;
+  if (!encontrada || encontrada.length > 1) return;
+
+  insertarLetra(pressedKey);
 }
 
-const handleScreenKeyboard = (e) => {
+function handleScreenKeyboard(e) {
   const target = e.target;
 
-  if (!target.classList.contains("teclado-boton")) {
-    return;
-  }
+  if (!target.classList.contains("teclado-boton")) return;
   let key = target.textContent;
-
-  if (key === "Del") {
-    key = "Backspace";
-  }
+  if (key === "Del") key = "Backspace";
 
   document.dispatchEvent(new KeyboardEvent("keyup", { key: key }));
 }
 
-const handleLetter = (i, correcto, row) => {
+function handleLetter(i, correcto, row) {
   const retraso = 200 * i;
   let colorDeLetra = "";
   const box = row.children[i];
@@ -296,22 +272,11 @@ const handleLetter = (i, correcto, row) => {
     }, 250);
     colorearLetraTeclado(letra, colorDeLetra);
   }, retraso);
-
-
-
 }
 
-
 // EVENT LISTENERS
-
-document.addEventListener("keyup", (e) => {
-  handleKeyUp(e)
-});
-
-document.getElementById("teclado").addEventListener("click", (e) => {
-  handleScreenKeyboard(e);
-});
-
+document.addEventListener("keyup", handleKeyUp);
+document.getElementById("teclado").addEventListener("click", handleScreenKeyboard);
 window.onload = () => {
   jugar();
 };
